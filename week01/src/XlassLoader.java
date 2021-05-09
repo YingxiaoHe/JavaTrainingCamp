@@ -8,9 +8,9 @@ public class XlassLoader extends ClassLoader {
     public static void main(String[] args) throws Exception {
         ClassLoader classLoader = new XlassLoader();
         for (String arg : args) {
-            // 加载Hello.xlass
+            // 加载.xlass
             Class<?> clazz = classLoader.loadClass(arg);
-            // 调用Hello.xlass中的所有方法
+            // 调用.xlass中的所有方法
             for (Method m : clazz.getDeclaredMethods()) {
                 System.out.println("-----------------------");
                 System.out.println(clazz.getSimpleName() + "." + m.getName());
