@@ -7,15 +7,17 @@ public class XlassLoader extends ClassLoader {
 
     public static void main(String[] args) throws Exception {
         ClassLoader classLoader = new XlassLoader();
-        // 加载Hello.xlass
-        Class<?> clazz = classLoader.loadClass("Hello");
-        // 调用Hello.xlass中的所有方法
-        for (Method m : clazz.getDeclaredMethods()) {
-            System.out.println("-----------------------");
-            System.out.println(clazz.getSimpleName() + "." + m.getName());
-            Object instance = clazz.getDeclaredConstructor().newInstance();
-            Method method = clazz.getMethod(m.getName());
-            method.invoke(instance);
+        for (String arg : args) {
+            // 加载Hello.xlass
+            Class<?> clazz = classLoader.loadClass(arg);
+            // 调用Hello.xlass中的所有方法
+            for (Method m : clazz.getDeclaredMethods()) {
+                System.out.println("-----------------------");
+                System.out.println(clazz.getSimpleName() + "." + m.getName());
+                Object instance = clazz.getDeclaredConstructor().newInstance();
+                Method method = clazz.getMethod(m.getName());
+                method.invoke(instance);
+            }
         }
     }
 
