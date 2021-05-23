@@ -19,11 +19,12 @@ public class NettyGatewayApplication {
 
         String proxyPort = System.getProperty("proxy", "8888");
 
-        String proxyServers = System.getProperty("proxyServers", "http://localhost:8801,http://localhost:8802");
+        String proxyServers = System.getProperty("proxyServers",
+                "http://localhost:8801,http://localhost:8802,http://localhost:8803");
         int port = Integer.parseInt(proxyPort);
         log.info("{} {} starting", GATEWAY_NAME, GATEWAY_VERSION);
         HttpInboundServer server = new HttpInboundServer(port, Arrays.asList(proxyServers.split(",")));
-        log.info("{} {} started at http://localhost:{} for server:{}", GATEWAY_NAME, GATEWAY_VERSION, port, server.toString());
+        log.info("{} {} started at http://localhost:{} for server:{}", GATEWAY_NAME, GATEWAY_VERSION, port, server);
         try {
             server.run();
         } catch (Exception ex) {
