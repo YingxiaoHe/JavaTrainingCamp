@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="animal" class="model.Animal">
+        <property name="id" value="0"/>
+        <property name="name" value="animal"/>
+    </bean>
+
+    <bean id="person" class="model.Person">
+        <property name="id" value="1"/>
+        <property name="name" value="person"/>
+    </bean>
+
+    <bean id="person2" class="model.Person">
+        <property name="id" value="1"/>
+        <property name="name" value="person"/>
+    </bean>
+
+    <bean id="group" class="model.Group">
+        <property name="personList">
+            <list>
+                <ref bean="person"/>
+                <ref bean="person2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="company" class="model.Company">
+        <property name="id" value="0"/>
+        <property name="name" value="company"/>
+    </bean>
+
+    <bean id="aopEat" class="aop.AopEat"/>
+
+    <aop:config>
+        <aop:pointcut expression="execution(* model.Animal.eat(..))" id="p1" /> <!--切点-->
+        <aop:aspect ref="aopEat"> <!--切面 -->
+            <aop:around method="around" pointcut-ref="p1" />
+            <aop:before method="startEat" pointcut-ref="p1" /> <!--前置通知-->
+            <aop:after-returning method="endEat" pointcut-ref="p1"/> <!--后置通知-->
+        </aop:aspect>
+    </aop:config>
+</beans>
