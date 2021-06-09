@@ -17,8 +17,8 @@ public class JdbcUtil {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://mysql.jdbc.example.com:3306/jdbc?characterEncoding=utf-8";
-            String user = "pekall";
-            String password = "Apple12#$";
+            String user = "root";
+            String password = "123123";
             connection = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException | SQLException e) {
             log.error(e.getMessage(), e);

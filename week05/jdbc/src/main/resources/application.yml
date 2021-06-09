@@ -6,8 +6,8 @@ spring:
       repositories:
         enable: true
   datasource:
-    username: pekall
-    password: Apple12#$
+    username: root
+    password: 123123
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://mysql.jdbc.example.com:3306/jdbc?characterEncoding=utf-8
     jdbc-interceptors: ConnectionState;StatementFinalizer;ResetAbandonedTimer;SlowQueryReport(threshold=2000)
