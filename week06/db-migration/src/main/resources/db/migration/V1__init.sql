@@ -12,6 +12,7 @@ CREATE TABLE `user`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+
 # 用户地址表
 drop table if exists `user_address`;
 create table `user_address`
@@ -65,11 +66,13 @@ CREATE TABLE `commodity`
 (
     `id`          varchar(255) not null comment 'id',
     `name`        varchar(255) not null comment '名称',
-    `create_time` datetime default null comment '创建时间',
-    `update_time` datetime default null comment '修改时间',
+    `price`       int          not null default 0 comment '商品价格',
+    `create_time` datetime              default null comment '创建时间',
+    `update_time` datetime              default null comment '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
+
 
 # 店铺表
 drop table if exists `shop`;
@@ -80,5 +83,18 @@ create table `shop`
     `create_time` datetime default null comment '创建时间',
     `update_time` datetime default null comment '修改时间',
     PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+
+# 店铺、商品关联表
+drop table if exists `shop_commodity_rel`;
+create table `shop_commodity_rel`
+(
+    `id`           varchar(255) not null comment 'id',
+    `shop_id`      bigint       not null comment '店铺id',
+    `commodity_id` bigint       not null comment '商品id',
+    primary key (`id`),
+    key `full_key` (`shop_id`, `commodity_id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
