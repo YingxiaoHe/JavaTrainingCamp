@@ -40,6 +40,7 @@ CREATE TABLE `order`
     `payment_time`  datetime default null comment '付款时间',
     `delivery_time` datetime default null comment '发货时间',
     `receive_time`  datetime default null comment '收货时间',
+    `status`        int      default 0 comment '订单状态',
     primary key (`id`),
     key `user_id` (`user_id`)
 ) ENGINE = InnoDB
