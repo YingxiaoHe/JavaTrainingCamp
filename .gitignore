@@ -25,3 +25,4 @@ hs_err_pid*
 # IDEA
 .idea
 out
+/week06_07/db-migration/target/
