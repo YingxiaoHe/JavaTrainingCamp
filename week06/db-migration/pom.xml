@@ -3,18 +3,17 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.pekall</groupId>
-    <artifactId>cds</artifactId>
+    <groupId>com.training.camp</groupId>
+    <artifactId>mysqltest</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>cds-db-migration</name>
-    <url>http://www.pekall.com</url>
+    <name>camp-db-migration</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <db.name>${dbName}</db.name>
         <jdbc.groupId>mysql</jdbc.groupId>
         <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
-        <jdbc.version>5.1.27</jdbc.version>
-        <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+        <jdbc.version>8.0.21</jdbc.version>
+        <jdbc.driverClassName>com.mysql.cj.jdbc.Driver</jdbc.driverClassName>
         <jdbc.validationQuery>SELECT 1 + 1</jdbc.validationQuery>
         <jdbc.master.url>jdbc:mysql://${master.host}:3306/${db.name}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.master.url>
 

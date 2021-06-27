@@ -10,7 +10,7 @@ CREATE TABLE `user`
     `update_time` datetime              default current_timestamp() comment '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 
 # 用户地址表
@@ -22,9 +22,11 @@ create table `user_address`
     `address`   varchar(255) not null default '' comment '详细地址',
     `contacts`  varchar(50)  not null default '' comment '联系人昵称',
     `telephone` varchar(20)  not null default '' comment '联系电话',
-    `area_code` varchar(20)           default '' comment '地址所属地区行政编码'
+    `area_code` varchar(20)           default '000000' comment '地址所属地区行政编码',
+    primary key (`id`),
+    key `user_id` (`user_id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 
 # 订单表
@@ -44,7 +46,7 @@ CREATE TABLE `order`
     primary key (`id`),
     key `user_id` (`user_id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 
 # 订单、商品关联表
@@ -58,7 +60,7 @@ create table `order_commodity_rel`
     primary key (`id`),
     key `full_key` (`user_id`, `order_id`, `commodity_id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 
 # 商品表
@@ -72,7 +74,7 @@ CREATE TABLE `commodity`
     `update_time` datetime              default null comment '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 
 # 店铺表
@@ -85,7 +87,7 @@ create table `shop`
     `update_time` datetime              default null comment '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 
 # 店铺、商品关联表
@@ -98,4 +100,4 @@ create table `shop_commodity_rel`
     primary key (`id`),
     key `full_key` (`shop_id`, `commodity_id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
