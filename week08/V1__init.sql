@@ -32,6 +32,14 @@ CREATE TABLE IF NOT EXISTS demo_ds_1.t_order_1
     PRIMARY KEY (order_id)
 );
 
+insert into t_order(user_id, status)
+values (1, 'OK'),
+       (1, 'FAIL');
+insert into t_order(user_id, status)
+values (2, 'OK'),
+       (2, 'FAIL');
+
+
 CREATE TABLE IF NOT EXISTS demo_ds_0.t_order_item_0
 (
     order_item_id BIGINT NOT NULL AUTO_INCREMENT,
