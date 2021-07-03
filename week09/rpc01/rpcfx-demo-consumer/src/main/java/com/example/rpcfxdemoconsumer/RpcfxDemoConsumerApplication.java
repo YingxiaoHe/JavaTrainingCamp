@@ -14,6 +14,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
+import java.util.Random;
 
 @Slf4j
 @SpringBootApplication
@@ -21,14 +22,11 @@ public class RpcfxDemoConsumerApplication {
 
     public static void main(String[] args) {
 
-        // UserService service = new xxx();
-        // service.findById
-
-        UserService userService = Rpcfx.create(UserService.class, "http://localhost:8080/");
+        UserService userService = Rpcfx.create(UserService.class, "http://localhost:8081/");
         User user = userService.findById(1);
         log.info("find user id=1 from server: {}", user.getName());
 
-        OrderService orderService = Rpcfx.create(OrderService.class, "http://localhost:8080/");
+        OrderService orderService = Rpcfx.create(OrderService.class, "http://localhost:8081/");
         Order order = orderService.findOrderById(1992129);
         log.info("find order name={}, amount={}", order.getName(), order.getAmount());
 
@@ -48,7 +46,7 @@ public class RpcfxDemoConsumerApplication {
     private static class RandomLoadBalancer implements LoadBalancer {
         @Override
         public String select(List<String> urls) {
-            return urls.get(0);
+            return urls.get(new Random(urls.toArray().length).nextInt());
         }
     }
 
