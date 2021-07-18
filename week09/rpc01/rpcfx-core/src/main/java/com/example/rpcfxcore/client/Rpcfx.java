@@ -34,8 +34,7 @@ public final class Rpcfx {
 
         String url = loadBalance.select(urls);
 
-        return (T
-                ) create(serviceClass, url, filter);
+        return (T) create(serviceClass, url, filter);
     }
 
     public static <T> T create(final Class<T> serviceClass, final String url, Filter... filters) {

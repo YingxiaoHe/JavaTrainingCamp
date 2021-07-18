@@ -47,6 +47,7 @@ public class RpcfxDemoConsumerApplication {
         @Override
         public String select(List<String> urls) {
             return urls.get(new Random(urls.toArray().length).nextInt());
+//            return urls.get(0);
         }
     }
 
